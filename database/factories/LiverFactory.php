@@ -19,7 +19,7 @@ class LiverFactory extends Factory
     {
         return [
             "titre" => fake()->sentence(5),
-            "année_de_publication" => fake()->dateTimeBetween(),
+            "année_de_publication" => fake()->dateTimeBetween("-15 years"),
             "nbr_page" => fake()->numberBetween(10, 500),
             "auteur_id" => Auteur::all()->random()->id
         ];
