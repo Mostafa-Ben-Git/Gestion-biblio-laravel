@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Liver;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class EmpruntFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            "date_emprunt" => fake()->dateTimeBetween("-1 year"),
+            "date_retour" => fake()->dateTimeBetween("+1 month", "+2 months"),
+            "liver_id" => Liver::all()->random()->id
         ];
     }
 }

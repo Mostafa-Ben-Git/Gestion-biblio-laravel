@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Auteur;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class LiverFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            "titre" => fake()->sentence(5),
+            "année_de_publication" => fake()->dateTimeBetween(),
+            "nbr_page" => fake()->numberBetween(10, 500),
+            "auteur_id" => Auteur::all()->random()->id
         ];
     }
 }
