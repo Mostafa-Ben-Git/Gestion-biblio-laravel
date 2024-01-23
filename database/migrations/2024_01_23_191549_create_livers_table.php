@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('livers', function (Blueprint $table) {
             $table->id();
+            $table->string("titre", 100);
+            $table->date("année_de_publication");
+            $table->integer("nbr_page");
             $table->timestamps();
         });
     }
