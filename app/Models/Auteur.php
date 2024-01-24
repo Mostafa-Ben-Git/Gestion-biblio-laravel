@@ -14,4 +14,8 @@ class Auteur extends Model
     {
         return $this->hasMany(Liver::class);
     }
+    public function fullName()
+    {
+        return $this->nom . " " . $this->prenom;
+    }
 }

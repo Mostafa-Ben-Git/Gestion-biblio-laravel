@@ -11,6 +11,8 @@ class Liver extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function auteur(): BelongsTo
     {
         return $this->belongsTo(Auteur::class);

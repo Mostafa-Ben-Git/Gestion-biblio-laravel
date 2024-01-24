@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auteur;
 use App\Models\Liver;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class LiverController extends Controller
      */
     public function index()
     {
-        //
+        return view('liver.home', ['livres' => Liver::latest()->paginate(8)]);
     }
 
     /**
@@ -20,7 +21,7 @@ class LiverController extends Controller
      */
     public function create()
     {
-        //
+        return view('liver.add', ["auteurs" => Auteur::all()]);
     }
 
     /**
@@ -28,7 +29,15 @@ class LiverController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            "titre" => 'string|max:100|min:5|required',
+            "nbr_page" => "integer|required",
+            'année_de_publication' => 'date|required',
+            'auteur_id' => 'exists:auteurs,id|required'
+        ]);
+
+        $livre = Liver::create($data);
+        return redirect()->route('liver.show', $livre)->with("pass", "Livre created successfully!");
     }
 
     /**
@@ -36,7 +45,7 @@ class LiverController extends Controller
      */
     public function show(Liver $liver)
     {
-        //
+        return view('liver.show', ['livre' => $liver]);
     }
 
     /**
@@ -44,6 +53,7 @@ class LiverController extends Controller
      */
     public function edit(Liver $liver)
     {
+        return view('liver.modifier', ['livre' => $liver]);
         //
     }
 
@@ -52,7 +62,15 @@ class LiverController extends Controller
      */
     public function update(Request $request, Liver $liver)
     {
-        //
+        $data = $request->validate([
+            "titre" => 'string|max:100|min:5|required',
+            "nbr_page" => "integer|required",
+            'année_de_publication' => 'date|required'
+        ]);
+
+        $liver->update($data);
+
+        return redirect()->route('liver.show', ['liver' => $liver])->with("pass", "Le livre est Modifie");
     }
 
     /**
@@ -60,6 +78,9 @@ class LiverController extends Controller
      */
     public function destroy(Liver $liver)
     {
-        //
+        $nom_livre = $liver->titre;
+        $liver->delete();
+
+        return redirect()->route('liver.index')->with("pass", "le livre <b>$nom_livre</b> supprimer aver succee ");
     }
 }

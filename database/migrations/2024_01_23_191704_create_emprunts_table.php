@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->date("date_emprunt");
             $table->date("date_retour");
-            $table->foreignIdFor(Liver::class)->constrained();
+            $table->foreignIdFor(Liver::class)->nullable()->constrained()->nullOnDelete();
             $table->timestamps();
         });
     }
