@@ -64,6 +64,9 @@ class AuteurController extends Controller
      */
     public function destroy(Auteur $auteur)
     {
-        //
+        $name = $auteur->fullName();
+
+        $auteur->delete();
+        return redirect()->route('auteur.index')->with('pass', "l'auteur <b>$name</b> supprimer aver succee");
     }
 }

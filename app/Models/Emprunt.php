@@ -10,6 +10,8 @@ class Emprunt extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['liver_id', "date_emprunt", 'date_retour'];
+
     public function liver(): BelongsTo
     {
         return $this->belongsTo(Liver::class);

@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuteurController;
+use App\Http\Controllers\EmpruntController;
 use App\Http\Controllers\LiverController;
-use App\Models\Liver;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +22,4 @@ Route::get('/', function () {
 
 Route::resource('liver', LiverController::class);
 Route::resource('auteur', AuteurController::class);
+Route::resource('emprunt', EmpruntController::class);
