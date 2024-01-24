@@ -12,7 +12,8 @@
             <p class="p-3 rounded bg-light">Année de publication : {{ $livre->année_de_publication }}</p>
         </div>
         <div class="d-flex justify-content-around my-4">
-            <form method="POST" action="{{ route('liver.destroy', $livre) }}">
+            <form method="POST" action="{{ route('liver.destroy', $livre) }}"
+                onsubmit='return confirm("Voulez-vous supprimer la livre :\n {{ $livre->titre }}")'>
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Supprimer Livre</button>

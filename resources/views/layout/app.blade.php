@@ -13,9 +13,9 @@
 </head>
 
 <body>
-    <nav>
-        <a href="{{ route('liver.index') }}" class="btn btn-dark m-2">Home</a>
-    </nav>
+    <header>
+        @include('nav')
+    </header>
     <div class="container">
         @yield('body')
     </div>

@@ -70,7 +70,7 @@ class LiverController extends Controller
 
         $liver->update($data);
 
-        return redirect()->route('liver.show', ['liver' => $liver])->with("pass", "Le livre est Modifie");
+        return redirect()->route('liver.show', ['liver' => $liver])->with("pass", "Le livre a etait Modifie");
     }
 
     /**
