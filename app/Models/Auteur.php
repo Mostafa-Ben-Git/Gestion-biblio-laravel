@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Auteur extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    protected $fillable = ["nom", "prenom"];
+  protected $fillable = ["nom", "prenom"];
 
-    public function livers(): HasMany
-    {
-        return $this->hasMany(Liver::class);
-    }
-    public function fullName()
-    {
-        return $this->nom . " " . $this->prenom;
-    }
+  public function livers(): HasMany
+  {
+    return $this->hasMany(Liver::class);
+  }
+  public function fullName()
+  {
+    return $this->nom . " " . $this->prenom;
+  }
 }
