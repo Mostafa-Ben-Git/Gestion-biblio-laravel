@@ -1,22 +1,23 @@
-@extends('layout.app')
+@extends('layouts.app')
 
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
-@section('style')
-    <style>
-        .hero {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 20rem;
-            margin: 10rem 0;
-            border-radius: 1rem;
-            background-color: rosybrown;
-        }
-    </style>
-@stop
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-@section('body')
-    <div class="hero">
-        <h1>Hello To Gestion de Bibliothèque Apps</h1>
+                    {{ __('You are logged in!') }}
+                </div>
+            </div>
+        </div>
     </div>
-@stop
+</div>
+@endsection
