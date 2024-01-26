@@ -4,7 +4,7 @@
 
     <h1 class="h1">Emprunt</h1>
     <div class="d-flex justify-content-between align-items-center my-3">
-        <div class="h6">Manager Votre Emprunts</div>
+        <div class="h6">Manager Votre Emprunts : <b>Number Row: {{ $emprunts->count() }}</b> </div>
         <form method="GET" action="{{ route('emprunt.index', ['date_1' => $date1, 'date_2' => $date2]) }}"
             class="d-flex align-items-center justify-content-between" style="gap: 1rem;">
             <label for="first" style="white-space:nowrap;">Search Date Emprunt Between :</label>
