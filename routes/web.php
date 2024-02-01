@@ -24,10 +24,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
+  Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
   Route::resource('liver', LiverController::class);
   Route::resource('auteur', AuteurController::class);
   Route::resource('emprunt', EmpruntController::class);
 });
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
