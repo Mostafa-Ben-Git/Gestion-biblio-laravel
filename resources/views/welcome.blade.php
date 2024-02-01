@@ -851,8 +851,9 @@
             </div>
         @endif
 
-        <div class="container">
-            <p class="display-2 text-white">Hello , To Gestion de Bibliothèque Site</p>
+        <div class="text-center bg-light p-5 rounded-3">
+            <p class="display-1 text-black font-monospace">BIBLIO</p>
+            <p class="display-5 text-black">Gestion de Bibliothèque Site</p>
         </div>
     </div>
 </body>
