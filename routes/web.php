@@ -18,13 +18,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-  return view('home');
-})->name('home');
-
-Route::resource('liver', LiverController::class);
-Route::resource('auteur', AuteurController::class);
-Route::resource('emprunt', EmpruntController::class);
+  return view('welcome');
+});
 
 Auth::routes();
+
+Route::group(['middleware' => 'auth'], function () {
+  Route::resource('liver', LiverController::class);
+  Route::resource('auteur', AuteurController::class);
+  Route::resource('emprunt', EmpruntController::class);
+});
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
