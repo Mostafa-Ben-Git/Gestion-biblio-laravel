@@ -1,6 +1,6 @@
-@extends('layout.app')
+@extends('layouts.app')
 
-@section('body')
+@section('content')
 
     <h1 class="h1">Livres</h1>
     <div class="d-flex justify-content-between my-3">

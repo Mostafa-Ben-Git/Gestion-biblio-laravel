@@ -1,6 +1,6 @@
-@extends('layout.app')
+@extends('layouts.app')
 
-@section('body')
+@section('content')
     <h1>➕ Add New Livre</h1>
 
     <form action="{{ route('liver.store') }}" method="post" class="bg-secondary p-5 rounded">

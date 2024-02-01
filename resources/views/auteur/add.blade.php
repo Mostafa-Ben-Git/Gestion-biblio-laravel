@@ -1,6 +1,6 @@
-@extends('layout.app')
+@extends('layouts.app')
 
-@section('body')
+@section('content')
     <h1>➕ Ajouter Auteur</h1>
 
     <form action="{{ route('auteur.store') }}" method="post" class="bg-secondary p-5 rounded">

@@ -1,6 +1,6 @@
-@extends('layout.app')
+@extends('layouts.app')
 
-@section('body')
+@section('content')
     <h1>➕ Ajouter Emprunt</h1>
 
     <form action="{{ route('emprunt.store') }}" method="post" class="bg-warning p-5 rounded my-4">

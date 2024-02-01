@@ -1,6 +1,6 @@
-@extends('layout.app')
+@extends('layouts.app')
 
-@section('body')
+@section('content')
     <div class="p-4 bg-info w-75 mx-auto my-5 rounded">
         @if (session()->has('pass'))
             <div class="alert alert-success">{!! session('pass') !!}</div>
