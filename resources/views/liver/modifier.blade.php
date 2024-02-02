@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>🔃 Modifier Livre</h1>
+    <h1> Modifier le Livre</h1>
 
-    <form action="{{ route('liver.update', $livre) }}" method="post" class="bg-secondary p-5 rounded">
+    <form action="{{ route('liver.update', $livre) }}" method="post" class=" p-5 rounded">
         @csrf
         @method('PUT')
         <div class="m-3">
@@ -36,7 +36,7 @@
         </div>
 
         <div>
-            <button type="submit" class="btn btn-warning mx-3">Modifier Livre</button>
+            <button type="submit" class="btn btn-primary mx-3">Modifier Livre</button>
         </div>
     </form>
 

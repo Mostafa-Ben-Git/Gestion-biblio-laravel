@@ -36,19 +36,19 @@
                         @if (Auth::check())
                             <li class="nav-item mx-2">
                                 <a href="{{ route('home') }}"
-                                    class="nav-link {{ Route::current()->getName() == 'home' ? 'fw-bolder border-bottom border-2' : '' }}">Home</a>
+                                    class="nav-link {{ Route::current()->getName() == 'home' ? 'fw-bolder border border-info border-4' : '' }}">Home</a>
                             </li>
                             <li class="nav-item mx-2">
                                 <a href="{{ route('liver.index') }}"
-                                    class="nav-link {{ Route::current()->getName() == 'liver.index' ? 'fw-bolder border-bottom border-2' : '' }}">Livres</a>
+                                    class="nav-link {{ Route::current()->getName() == 'liver.index' ? 'fw-bolder border border-info border-4' : '' }}">Livres</a>
                             </li>
                             <li class="nav-item mx-2">
                                 <a href="{{ route('auteur.index') }}"
-                                    class="nav-link {{ Route::current()->getName() == 'auteur.index' ? 'fw-bolder border-bottom border-2' : '' }}">Auteurs</a>
+                                    class="nav-link {{ Route::current()->getName() == 'auteur.index' ? 'fw-bolder border border-info border-4' : '' }}">Auteurs</a>
                             </li>
                             <li class="nav-item mx-2">
                                 <a href="{{ route('emprunt.index') }}"
-                                    class="nav-link {{ Route::current()->getName() == 'emprunt.index' ? 'fw-bolder border-bottom border-2' : '' }}">Emprunts</a>
+                                    class="nav-link {{ Route::current()->getName() == 'emprunt.index' ? 'fw-bolder border border-info border-4' : '' }}">Emprunts</a>
                             </li>
                         @endif
 

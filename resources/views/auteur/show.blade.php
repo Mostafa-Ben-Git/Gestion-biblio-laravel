@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="p-4 bg-info w-75 mx-auto my-5 rounded">
+    <div class="p-4 w-75 mx-auto my-5 rounded">
         @if (session()->has('pass'))
             <div class="alert alert-success">{!! session('pass') !!}</div>
         @endisset
@@ -17,9 +17,9 @@
                 onsubmit='return confirm("Voulez-vous supprimer la auteur :\n {{ $auteur->fullName() }}")'>
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger">Supprimer Auteur</button>
+                <button type="submit" class="btn btn-primary">Supprimer </button>
             </form>
-            <a class="btn btn-secondary" href="{{ route('auteur.edit', $auteur) }}">Edit auteur</a>
+            <a class="btn btn-secondary" href="{{ route('auteur.edit', $auteur) }}">Modifier</a>
         </div>
 </div>
 @stop

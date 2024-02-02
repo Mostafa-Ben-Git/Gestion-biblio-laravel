@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>🔃 Modifier Auteur {{ $auteur->fullName() }}</h1>
+    <h1> Modifier le Auteur {{ $auteur->fullName() }}</h1>
 
-    <form action="{{ route('auteur.update', $auteur) }}" method="post" class="bg-secondary p-5 rounded">
+    <form action="{{ route('auteur.update', $auteur) }}" method="post" class=" p-5 rounded">
         @csrf
         @method('PUT')
         <div class="m-3">
@@ -22,7 +22,7 @@
             @enderror
         </div>
         <div>
-            <button type="submit" class="btn btn-warning mx-3">Modifier Auteur</button>
+            <button type="submit" class="btn btn-primary mx-3">Modifier Auteur</button>
         </div>
     </form>
 

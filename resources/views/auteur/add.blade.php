@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>➕ Ajouter Auteur</h1>
+    <h1> Ajouter le Auteur</h1>
 
     <form action="{{ route('auteur.store') }}" method="post" class="bg-secondary p-5 rounded">
         @csrf
