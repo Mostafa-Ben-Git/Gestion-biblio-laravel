@@ -1,28 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>🔃 Modifier Auteur {{ $auteur->fullName() }}</h1>
+    <h1>🔃 Modifier Emprunt {{ $emprunt->id }}</h1>
 
-    <form action="{{ route('auteur.update', $auteur) }}" method="post" class="bg-secondary p-5 rounded">
+    <form action="{{ route('emprunt.update', $emprunt) }}" method="post" class="bg-secondary p-5 rounded">
         @csrf
         @method('PUT')
         <div class="m-3">
-            <label for="nom" class="form-label">Nom:</label>
-            <input type="text" class="form-control" name="nom" value="{{ $auteur->nom ?? old('nom') }}">
+            <label for="liver_id" class="form-label">Date Emprunt:</label>
+            <select class="form-control" name="liver_id" value="{{ $emprunt->liver_id ?? old('liver_id') }}">
+                @foreach ($livres as $livre)
+                    <option value="{{ $livre->id }}">{{ $livre->titre }}</option>
+                @endforeach
+            </select>
         </div>
-        @error('nom')
+        @error('liver_id')
             <p class="text-danger">{{ $message }}</p>
         @enderror
         <div class="m-3">
-            <label for="prenom" class="form-label">Prenom:</label>
-            <input type="text" class="form-control" name="prenom" id="prenom"
-                value="{{ $auteur->prenom ?? old('prenom') }}">
-            @error('prenom')
+            <label for="date_emprunt" class="form-label">Date Emprunt:</label>
+            <input type="date" class="form-control" name="date_emprunt"
+                value="{{ $emprunt->date_emprunt ?? old('nom') }}">
+        </div>
+        @error('date_emprunt')
+            <p class="text-danger">{{ $message }}</p>
+        @enderror
+        <div class="m-3">
+            <label for="date_retour" class="form-label">Date Retour:</label>
+            <input type="date" class="form-control" name="date_retour" id="date_retour"
+                value="{{ $emprunt->date_retour ?? old('date_retour') }}">
+            @error('date_retour')
                 <p class="text-danger">{{ $message }}</p>
             @enderror
         </div>
         <div>
-            <button type="submit" class="btn btn-warning mx-3">Modifier Auteur</button>
+            <button type="submit" class="btn btn-warning mx-3">Modifier emprunt</button>
         </div>
     </form>
 

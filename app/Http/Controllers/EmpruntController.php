@@ -65,7 +65,8 @@ class EmpruntController extends Controller
    */
   public function edit(Emprunt $emprunt)
   {
-    return view('emprunt.modifier', compact('emprunt'));
+    $livres = Liver::all();
+    return view('emprunt.modifier', compact('emprunt', 'livres'));
   }
 
   /**
@@ -73,7 +74,10 @@ class EmpruntController extends Controller
    */
   public function update(EmpruntRequest $request, Emprunt $emprunt)
   {
-    //
+
+    $emprunt->update($request->validated());
+
+    return redirect()->route('emprunt.show', compact('emprunt'))->with('pass', "L'Emprunt a etait Modifie");
   }
 
   /**
