@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>➕ Ajouter Emprunt</h1>
+    <h1>Ajouter le Emprunt</h1>
 
-    <form action="{{ route('emprunt.store') }}" method="post" class="bg-warning p-5 rounded my-4">
+    <form action="{{ route('emprunt.store') }}" method="post" class=" p-5 rounded my-4">
         @csrf
         <div class="m-3">
             <label for="livre" class="form-label">Choisir le Livre a emprunte:</label>
@@ -28,7 +28,7 @@
             @enderror
         </div>
         <div>
-            <button type="submit" class="btn btn-success mx-3">Ajouter Emprunt</button>
+            <button type="submit" class="btn btn-primary mx-3">Ajouter le Emprunt</button>
         </div>
     </form>
 

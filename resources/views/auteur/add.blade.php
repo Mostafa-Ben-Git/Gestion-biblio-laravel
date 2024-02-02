@@ -3,7 +3,7 @@
 @section('content')
     <h1> Ajouter le Auteur</h1>
 
-    <form action="{{ route('auteur.store') }}" method="post" class="bg-secondary p-5 rounded">
+    <form action="{{ route('auteur.store') }}" method="post" class=" p-5 rounded">
         @csrf
         <div class="m-3">
             <label for="nom" class="form-label">Nom:</label>
@@ -20,7 +20,7 @@
             @enderror
         </div>
         <div>
-            <button type="submit" class="btn btn-success  mx-3">Ajouter Auteur</button>
+            <button type="submit" class="btn btn-primary  mx-3">Ajouter Auteur</button>
         </div>
     </form>
 

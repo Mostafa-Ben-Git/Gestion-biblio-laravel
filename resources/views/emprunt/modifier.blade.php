@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>🔃 Modifier Emprunt {{ $emprunt->id }}</h1>
+    <h1>Modifier le Emprunt {{ $emprunt->id }}</h1>
 
-    <form action="{{ route('emprunt.update', $emprunt) }}" method="post" class="bg-secondary p-5 rounded">
+    <form action="{{ route('emprunt.update', $emprunt) }}" method="post" class=" p-5 rounded">
         @csrf
         @method('PUT')
         <div class="m-3">
@@ -34,7 +34,7 @@
             @enderror
         </div>
         <div>
-            <button type="submit" class="btn btn-warning mx-3">Modifier emprunt</button>
+            <button type="submit" class="btn btn-primary mx-3">Modifier emprunt</button>
         </div>
     </form>
 
