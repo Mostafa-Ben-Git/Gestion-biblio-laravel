@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ModelAdded;
+use App\Events\ModelDeleted;
+use App\Events\ModelUpdated;
 use App\Http\Requests\EmpruntRequest;
 use App\Models\Emprunt;
 use App\Models\Liver;
@@ -49,6 +52,7 @@ class EmpruntController extends Controller
       ...$request->validated(),
       'date_emprunt' => date("Y-m-d")
     ]);
+    event(new ModelAdded($emprunt));
     return redirect()->route('emprunt.show', $emprunt)->with("pass", "Emprunt created successfully!");
   }
 
@@ -77,6 +81,8 @@ class EmpruntController extends Controller
 
     $emprunt->update($request->validated());
 
+    event(new ModelUpdated($emprunt));
+
     return redirect()->route('emprunt.show', compact('emprunt'))->with('pass', "L'Emprunt a etait Modifie");
   }
 
@@ -85,6 +91,7 @@ class EmpruntController extends Controller
    */
   public function destroy(Emprunt $emprunt)
   {
+    event(new ModelDeleted($emprunt));
     $emprunt->delete();
 
     return redirect()->route('emprunt.index')->with('pass', "l'emprunt <b>$emprunt->id</b> est supprimer avec succee");

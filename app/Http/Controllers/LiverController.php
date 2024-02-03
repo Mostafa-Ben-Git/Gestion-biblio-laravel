@@ -2,85 +2,92 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ModelAdded;
+use App\Events\ModelDeleted;
+use App\Events\ModelUpdated;
 use App\Models\Auteur;
 use App\Models\Liver;
 use Illuminate\Http\Request;
 
 class LiverController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        return view('liver.home', ['livres' => Liver::latest()->paginate(8)]);
-    }
+  /**
+   * Display a listing of the resource.
+   */
+  public function index()
+  {
+    return view('liver.home', ['livres' => Liver::latest()->paginate(8)]);
+  }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('liver.add', ["auteurs" => Auteur::all()]);
-    }
+  /**
+   * Show the form for creating a new resource.
+   */
+  public function create()
+  {
+    return view('liver.add', ["auteurs" => Auteur::all()]);
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            "titre" => 'string|max:100|min:5|required',
-            "nbr_page" => "integer|required",
-            'année_de_publication' => 'date|required',
-            'auteur_id' => 'exists:auteurs,id|required'
-        ]);
+  /**
+   * Store a newly created resource in storage.
+   */
+  public function store(Request $request)
+  {
+    $data = $request->validate([
+      "titre" => 'string|max:100|min:5|required',
+      "nbr_page" => "integer|required",
+      'année_de_publication' => 'date|required',
+      'auteur_id' => 'exists:auteurs,id|required'
+    ]);
 
-        $livre = Liver::create($data);
-        return redirect()->route('liver.show', $livre)->with("pass", "Livre created successfully!");
-    }
+    $livre = Liver::create($data);
+    event(new ModelAdded($livre));
+    return redirect()->route('liver.show', $livre)->with("pass", "Livre created successfully!");
+  }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Liver $liver)
-    {
-        return view('liver.show', ['livre' => $liver]);
-    }
+  /**
+   * Display the specified resource.
+   */
+  public function show(Liver $liver)
+  {
+    return view('liver.show', ['livre' => $liver]);
+  }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Liver $liver)
-    {
-        return view('liver.modifier', ['livre' => $liver]);
-        //
-    }
+  /**
+   * Show the form for editing the specified resource.
+   */
+  public function edit(Liver $liver)
+  {
+    return view('liver.modifier', ['livre' => $liver]);
+    //
+  }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Liver $liver)
-    {
-        $data = $request->validate([
-            "titre" => 'string|max:100|min:5|required',
-            "nbr_page" => "integer|required",
-            'année_de_publication' => 'date|required'
-        ]);
+  /**
+   * Update the specified resource in storage.
+   */
+  public function update(Request $request, Liver $liver)
+  {
+    $data = $request->validate([
+      "titre" => 'string|max:100|min:5|required',
+      "nbr_page" => "integer|required",
+      'année_de_publication' => 'date|required'
+    ]);
 
-        $liver->update($data);
+    $liver->update($data);
+    event(new ModelUpdated($liver));
 
-        return redirect()->route('liver.show', ['liver' => $liver])->with("pass", "Le livre a etait Modifie");
-    }
+    return redirect()->route('liver.show', ['liver' => $liver])->with("pass", "Le livre a etait Modifie");
+  }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Liver $liver)
-    {
-        $nom_livre = $liver->titre;
-        $liver->delete();
+  /**
+   * Remove the specified resource from storage.
+   */
+  public function destroy(Liver $liver)
+  {
+    $nom_livre = $liver->titre;
 
-        return redirect()->route('liver.index')->with("pass", "le livre <b>$nom_livre</b> supprimer aver succee ");
-    }
+    event(new ModelDeleted($liver));
+    $liver->delete();
+
+    return redirect()->route('liver.index')->with("pass", "le livre <b>$nom_livre</b> supprimer aver succee ");
+  }
 }

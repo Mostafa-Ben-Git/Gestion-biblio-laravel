@@ -16,9 +16,9 @@ class DatabaseSeeder extends Seeder
     \App\Models\Liver::factory(200)->create();
     \App\Models\Emprunt::factory(100)->create();
 
-    // \App\Models\User::factory()->create([
-    //   'name' => 'Mostafa Ben',
-    //   'email' => 'test@example.com',
-    // ]);
+    \App\Models\User::factory()->create([
+      'name' => 'Jhon Doe',
+      'email' => 'test@example.com',
+    ]);
   }
 }
