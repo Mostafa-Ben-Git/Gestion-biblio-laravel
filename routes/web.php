@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuteurController;
 use App\Http\Controllers\EmpruntController;
 use App\Http\Controllers\LiverController;
+use App\Models\History;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,4 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::resource('liver', LiverController::class);
   Route::resource('auteur', AuteurController::class);
   Route::resource('emprunt', EmpruntController::class);
+  Route::get('history', function () {
+    return view('history', ['historys' => History::latest()->paginate(10)]);
+  })->name('history');
 });

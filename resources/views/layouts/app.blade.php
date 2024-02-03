@@ -56,6 +56,9 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                        @if (Auth::check())
+                            <a class="btn btn-secondary mx-3" href="{{ route('history') }}">History</a>
+                        @endif
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
